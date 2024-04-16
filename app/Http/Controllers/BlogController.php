@@ -13,8 +13,9 @@ class BlogController extends Controller
     public function index()
     {
 
+        $user = auth()->user();
         return Inertia::render('Blog', [
-            'blogs' => Blog::all(),
+            'blogs' => $user->blogs,
         ]   
         );
     }
@@ -34,6 +35,7 @@ class BlogController extends Controller
         $blog = new Blog();
         $blog->title = $request->title;
         $blog->content = $request->content;
+        $blog->user_id = auth()->user()->id;
         $blog->save();
 
         return redirect()->route('blogs.index');
@@ -55,6 +57,9 @@ class BlogController extends Controller
         ]);
 
         $blog = Blog::find($id);
+        // if ($blog->user_id !== auth()->user()->id) {
+        //     return redirect()->route('blogs.index');
+        // }
         $blog->title = $request->title;
         $blog->content = $request->content;
         $blog->save();
