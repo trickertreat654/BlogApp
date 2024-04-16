@@ -19,6 +19,8 @@
         "vue": "^3.4.0"
     },
     "dependencies": {
-        "@vueuse/core": "^10.9.0"
+        "@tailwindcss/typography": "^0.5.12",
+        "@vueuse/core": "^10.9.0",
+        "vue-markdown-render": "^2.1.1"
     }
 }
