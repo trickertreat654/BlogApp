@@ -23,8 +23,9 @@ defineProps({
                                 <div v-for="blog in blogs" :key="blog.id" class="p-4 border border-red-500 rounded-lg text-md dark:prose-invert">
                                     <h1>{{ blog.title }}</h1>
                                     <p>Hi</p>
-                                    <Link class="px-2 py-2 mr-4 bg-indigo-200 rounded-lg dark:bg-indigo-700" as="button" :href="route('blogs.show', { blog: blog.id })">Read more</Link>
-                                    <Link class="px-2 py-2 bg-indigo-200 rounded-lg dark:bg-indigo-700" as="button" :href="route('blogs.edit', { blog: blog.id })">Edit</Link>
+                                    <Link class="px-2 py-2 bg-indigo-200 rounded-lg dark:bg-indigo-700" as="button" :href="route('blogs.show', { blog: blog.id })">Read more</Link>
+                                    <Link class="px-2 py-2 mx-4 bg-indigo-200 rounded-lg dark:bg-indigo-700" as="button" :href="route('blogs.edit', { blog: blog.id })">Edit</Link>
+                                    <Link method="delete" class="px-2 py-2 bg-indigo-200 rounded-lg dark:bg-indigo-700" as="button" :href="route('blogs.destroy', { blog: blog.id })">Delete</Link>
                                 </div>
                             </div>
                    </article>
