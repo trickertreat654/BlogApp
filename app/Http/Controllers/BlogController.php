@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Picture;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\File as RulesFile;
 
 class BlogController extends Controller
 {
@@ -99,7 +101,13 @@ class BlogController extends Controller
     public function storePicture(Request $request)
     {
         $request->validate([
-            'picture' => 'required|image',
+            'picture' => [
+                'required',
+                RulesFile::image()
+                    ->min(128)
+                    ->max(12 * 1024)
+                    ->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500)),
+            ],
         ]);
         Log::info($request);
         $file = $request->file('picture');
