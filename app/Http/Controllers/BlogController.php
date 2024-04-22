@@ -106,7 +106,7 @@ class BlogController extends Controller
                 RulesFile::image()
                     ->min(128)
                     ->max(12 * 1024)
-                    ->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500)),
+                    // ->dimensions(Rule::dimensions()->maxWidth(1000)->maxHeight(500)),
             ],
         ]);
         Log::info($request);
