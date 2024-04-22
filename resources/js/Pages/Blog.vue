@@ -17,6 +17,7 @@ defineProps({
         <template #header>
             <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">Blog</h2>
         </template>
+
         <div class="py-12">
                 <article class="mx-auto mt-16 prose dark:prose-invert lg:prose-xl prose-code:{html}">
                         <div  class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2">

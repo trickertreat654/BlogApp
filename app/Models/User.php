@@ -54,4 +54,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Blog::class);
     }
+
+    /**
+     * Get the pictures for the user.
+     */
+    public function pictures(): HasMany
+    {
+        return $this->hasMany(Picture::class);
+    }
 }

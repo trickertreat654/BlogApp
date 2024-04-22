@@ -20,9 +20,24 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/pictureupload', function () {
+    return Inertia::render('PictureUpload');
+})->middleware(['auth', 'verified'])->name('pictureupload');
+
 
 Route::resource('blogs', BlogController::class)->middleware(['auth', 'verified']);
 
+
+Route::post('/blogs/pictures', [BlogController::class, 'storePicture'])->middleware(['auth', 'verified'])->name('pictures.store');
+
+// Route::get('/picture', function () {
+//     // get the users pictures to display in the edit form for blogs
+//     $pictures = auth()->user()->pictures;
+//     return Inertia::render('Picture', [
+//         'pictures' => $pictures
+//     ]);
+
+// })->middleware(['auth', 'verified']);
 
 
 
