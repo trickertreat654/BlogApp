@@ -118,7 +118,7 @@ class BlogController extends Controller
     
         // The 's3' disk corresponds to the 's3' configuration in filesystems.php.
         // 'public' visibility will make the file publicly accessible. If you want the file to be private, you can omit the third argument.
-         $path = Storage::disk('s3')->putFile('pictures', new File($file), 'private');
+         $path = Storage::disk('s3')->putFile('pictures', new File($file));
         // $path = $request->file('avatar')->store('avatars', 's3');
 
 
@@ -126,7 +126,8 @@ class BlogController extends Controller
     
         // Retrieve the full URL to the file on S3
 
-        $url = Storage::disk('s3')->temporaryUrl($path, now()->addMinutes(5));
+        $url = Storage::disk('s3')->url($path);
+        Log::info($url);
 
         $user = auth()->user();
     
