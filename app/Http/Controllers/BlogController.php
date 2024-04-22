@@ -99,10 +99,10 @@ class BlogController extends Controller
     public function storePicture(Request $request)
     {
         $request->validate([
-            'avatar' => 'required|image',
+            'picture' => 'required|image',
         ]);
         Log::info($request);
-        $file = $request->file('avatar');
+        $file = $request->file('picture');
         Log::info($file);
         // $avatar = $request->file('avatar')->store('avatars');
         // Log::info($avatar);

@@ -39,14 +39,13 @@ const form = useForm({
     title: state.value.title,
     content: state.value.content
 });
-
 const pictureForm = useForm({
-    picture: null
-});
+    //   name: null,
+    picture: null,
+})
 
 function handleFileUpload() {
-    pictureForm.post('/blogs/pictures')
-    
+  pictureForm.post('/blogs/pictures')
 }
 
 const clearState = () => {
@@ -115,11 +114,13 @@ const value = 'Title'
                     {{ url }} -->
 
                     <div class="w-full prose prose-invert">
-                        <form @submit.prevent="handleFileUpload()">
-                            <button  class="p-4 bg-indigo-200 rounded-lg dark:bg-indigo-700 text-md" type="submit">Upload
-                                Picture</button>
-                                <input type="file" @input="pictureForm.picture = $event.target.files[0]" />
-
+                        <form @submit.prevent="handleFileUpload">
+                            <!-- <input type="text" v-model="form.name" /> -->
+                            <input type="file" @input="pictureForm.picture = $event.target.files[0]" />
+                            <progress v-if="pictureForm.progress" :value="pictureForm.progress.percentage" max="100">
+                                {{ form.progress.percentage }}%
+                            </progress>
+                            <button type="submit">Submit</button>
                         </form>
                         <div class="grid w-full grid-cols-2 ">
                             <div v-for="picture in props.pictures" class="">
